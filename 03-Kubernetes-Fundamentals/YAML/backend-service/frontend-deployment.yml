@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frondend-nginxapp
+  labels:
+    app: frondend-nginxapp
+    tier: frondend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frondend-nginxapp
+  template:
+    metadata:
+      labels:
+        app: frondend-nginxapp
+        tier: frondend
+    spec:
+      containers:
+        - name: frondend-nginxapp
+          image: stacksimplify/kube-frontend-nginx:1.0.0
+          ports:
+            - containerPort: 80
